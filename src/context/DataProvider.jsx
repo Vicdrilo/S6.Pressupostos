@@ -10,13 +10,12 @@ const checkboxChecked = React.createContext();
 const setStateCheck = React.createContext();
 
 const options = budgetOptions.options;
-console.log(options[0]);
+console.log(options);
 
 export function useCrearCheckbox() {
   return useContext(crearCheckboxes);
 }
 export function useDataJSON() {
-  console.log("PRUEBA OPTIONS: ", options);
   return useContext(dataJSON);
 }
 

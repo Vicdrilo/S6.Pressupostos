@@ -4,13 +4,13 @@ import { useSetStateCheck } from "../context/DataProvider";
 import { useTotalPrice } from "../context/DataProvider";
 import { useDataJSON } from "../context/DataProvider";
 
-const data = useDataJSON;
+const data = useDataJSON();
+console.log(data);
 const isChecked = useCheckboxChecked;
 export function CheckB() {
   const cbContainerClass = isChecked
     ? "cb-container cb-container-border"
     : "cb-container";
-
   const cbContainerDisplayNone =
     isChecked && option.title === "Web"
       ? "cb-container-web-options"
