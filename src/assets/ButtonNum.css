@@ -8,7 +8,9 @@
 .bn-input-text-num {
   width: 3rem;
   text-align: center;
+  font-size: 1.2rem;
   border-radius: 10px;
+  cursor: not-allowed;
 }
 
 .bn-less,
@@ -16,7 +18,9 @@
   padding: 0;
 }
 .bn-less:hover,
-.bn-plus:hover {
+.bn-plus:hover,
+.bn-less:not(:hover),
+.bn-plus:not(:hover) {
   border: none;
 }
 
