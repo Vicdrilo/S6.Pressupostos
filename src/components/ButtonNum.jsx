@@ -3,7 +3,7 @@ import minus from "../assets/minus-svgrepo-com.svg";
 import plus from "../assets/plus-svgrepo-com.svg";
 import "../assets/ButtonNum.css";
 
-export function ButtonNum({ id, title, changeTotalPrice }) {
+export function ButtonNum({ id, changeTotalPrice }) {
   const [num, setNum] = useState(0);
 
   const changeNum = (e) => {
