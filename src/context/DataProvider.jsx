@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import budgetOptions from "../data/BudgetData.json";
-import { CheckBox } from "../components/CheckBox";
 
 //Creación de los context //////////////////////////////////////////////////
 const dataContext = React.createContext();
