@@ -29,13 +29,23 @@
   gap: 2rem;
 }
 .cb-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-
   box-shadow: 5px 5px 5px 1px rgb(183, 181, 181);
   border-radius: 30px;
   padding: 1rem;
+}
+
+.cb-container-border {
+  border-bottom: 1.5px solid rgba(0, 112, 0, 0.591);
+  border-right: 1.5px solid rgba(0, 112, 0, 0.591);
+  box-shadow: 5px 5px 5px 1px rgb(0, 112, 0, 0.591);
+  background-color: rgba(0, 112, 0, 0.041);
+  transition: background-color 0.3s ease, border-bottom 0.3s ease,
+    border-right 0.3s ease, box-shadow 0.3s ease;
+}
+.cb-container-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 .cb-description-container {
   display: flex;
@@ -49,7 +59,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  width: 30%;
 }
 
 .cb-description-container > h2 {
@@ -60,20 +70,50 @@
   text-align: left;
 }
 
+.cb-price-container {
+  margin-right: 3px;
+}
+.cb-price-container > strong {
+  font-size: 1.8rem;
+}
+
+.cb-container-web-options {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.cb-container-web-options-none {
+  display: none;
+}
+
+.sum-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.sum-h1-preu-total {
+  font-size: 2rem;
+}
+
 @media only screen and (max-width: 600px) {
-  .cb-container {
+  .cb-container,
+  .sum-container {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 800px) {
-  .cb-container {
+  .cb-container,
+  .sum-container {
     width: 80%;
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  .cb-container {
+  .cb-container,
+  .sum-container {
     width: 70%;
   }
 }

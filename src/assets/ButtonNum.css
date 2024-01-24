@@ -1,0 +1,27 @@
+.bn-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 30%;
+  margin-left: 1rem;
+}
+
+.bn-input-text-num {
+  width: 3rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.bn-less,
+.bn-plus {
+  padding: 0;
+}
+.bn-less:hover,
+.bn-plus:hover {
+  border: none;
+}
+
+.bn-img {
+  border: 2px solid rgba(0, 112, 0, 0.591);
+  border-radius: 50%;
+  width: 30px;
+}

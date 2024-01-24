@@ -1,0 +1,12 @@
+.wo-pages-container,
+.wo-language-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.wo-pages-container > label,
+.wo-language-container > label {
+  padding-top: 15px;
+}
