@@ -1,9 +1,15 @@
 import "./assets/App.css";
-import { Header } from "./components/Header";
+import { CheckB } from "./components/CheckB";
 import { CheckBox } from "./components/CheckBox";
+import { Header } from "./components/Header";
+//import { CheckBox } from "./components/CheckBox";
 import { Summary } from "./components/Summary";
-import { useState } from "react";
-
+import { useTotalPrice } from "./context/DataProvider";
+import { useDataJSON } from "./context/DataProvider";
+import { useCrearCheckbox } from "./context/DataProvider";
+//import { useState } from "react";
+import { DataProvider } from "./context/DataProvider";
+/*
 const options = [
   {
     title: "Seo",
@@ -21,10 +27,11 @@ const options = [
     price: 500,
   },
 ];
-
+*/
 function App() {
-  const [total, setTotal] = useState(0);
+  //const [total, setTotal] = useState(0);
 
+  /*
   const changeTotalPrice = (checked, price) => {
     if (checked) {
       setTotal(total + price);
@@ -44,13 +51,20 @@ function App() {
       />
     );
   });
+*/
+
+  const opt = useDataJSON;
+  console.log("PRUEBA: ", opt);
+  const total = useTotalPrice;
 
   return (
-    <>
+    <DataProvider>
       <Header>Aconsegueix la millor qualitat</Header>
-      <div className="app-checkbox-container">{checkBox}</div>
+      <div className="app-checkbox-container">
+        <CheckB />
+      </div>
       <Summary>{total}</Summary>
-    </>
+    </DataProvider>
   );
 }
 
