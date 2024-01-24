@@ -1,27 +1,28 @@
+import { useState } from "react";
 import { useDataContext } from "../context/DataProvider";
 import { WebOptions } from "./WebOptions";
 
 export function CheckB() {
-  let title = "";
   const {
     budgetOptions,
     total,
     changeTotalPrice,
-    isChecked,
+    checkedStates,
     changeStateCheck,
   } = useDataContext();
 
-  const cbContainerClass = isChecked
-    ? "cb-container cb-container-border"
-    : "cb-container";
-
-  const cbContainerDisplayNone =
-    isChecked && title.toLowerCase() === "web"
-      ? "cb-container-web-options"
-      : "cb-container-web-options-none";
-
   const creationCheckboxes = budgetOptions.map((option, index) => {
-    title = option.title;
+    const isChecked = checkedStates[index];
+
+    const cbContainerClass = isChecked
+      ? "cb-container cb-container-border"
+      : "cb-container";
+
+    const cbContainerDisplayNone =
+      isChecked && option.title.toLowerCase() === "web"
+        ? "cb-container-web-options"
+        : "cb-container-web-options-none";
+
     return (
       <div className={cbContainerClass} key={index}>
         <div className="cb-container-main">
@@ -39,8 +40,9 @@ export function CheckB() {
                 type="checkbox"
                 id={option.title}
                 name={option.title}
+                checked={isChecked}
                 onChange={(e) => {
-                  changeStateCheck(e.target.checked);
+                  changeStateCheck(index, e.target.checked);
                   changeTotalPrice(e.target.checked, option.price);
                 }}
               />

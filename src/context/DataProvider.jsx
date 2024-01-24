@@ -28,15 +28,21 @@ export function DataProvider({ children }) {
   };
 
   //State para controlar si un checkbox está seleccionado o no
-  const [isChecked, setCheck] = useState(false);
-  //Método para cambiar el estado de selección del checkbox
-  const changeStateCheck = (e) => setCheck(e);
+  const [checkedStates, setCheckedStates] = useState(
+    budgetOptions.map(() => false)
+  );
+  // Método para cambiar el estado de selección del checkbox
+  const changeStateCheck = (index, isChecked) => {
+    const newCheckedStates = [...checkedStates];
+    newCheckedStates[index] = isChecked;
+    setCheckedStates(newCheckedStates);
+  };
 
   const data = {
     budgetOptions,
     total,
     changeTotalPrice,
-    isChecked,
+    checkedStates,
     changeStateCheck,
   };
 
