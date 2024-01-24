@@ -2,8 +2,17 @@ import { useState } from "react";
 import minus from "../assets/minus-svgrepo-com.svg";
 import plus from "../assets/plus-svgrepo-com.svg";
 import "../assets/ButtonNum.css";
+import { useDataContext } from "../context/DataProvider";
 
-export function ButtonNum({ id, changeTotalPrice }) {
+export function ButtonNum({ id }) {
+  const {
+    budgetOptions,
+    total,
+    changeTotalPrice,
+    isChecked,
+    changeStateCheck,
+  } = useDataContext();
+
   const [num, setNum] = useState(0);
 
   const changeNum = (e) => {

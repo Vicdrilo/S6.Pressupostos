@@ -1,31 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import budgetOptions from "../data/BudgetData.json";
 
-const crearCheckboxes = React.createContext();
-const totalPrice = React.createContext();
-const setTotalPrice = React.createContext();
+//Creación de los context //////////////////////////////////////////////////
+const dataContext = React.createContext();
 
-const options = JSON.stringify(budgetOptions.options);
-/*const options = [
-  {
-    title: "Seo",
-    description: "Programació d'una web responsive completa",
-    price: 300,
-  },
-  {
-    title: "Ads",
-    description: "Programació d'una web responsive completa",
-    price: 400,
-  },
-  {
-    title: "Web",
-    description: "Programació d'una web responsive completa",
-    price: 500,
-  },
-];*/
+console.log("Prueba de que retorna el JSON: ", budgetOptions);
 
+//useContext/////////////////////////////////////////////////////////////////
+export function useDataContext() {
+  return useContext(dataContext);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
 export function DataProvider({ children }) {
+  //Datos que añadir al Provider//////////////////////////////////////////////
+
+  //State para controlar el precio del presupuesto
   const [total, setTotal] = useState(0);
+  //Método para cambiar el precio del presupuesto
   const changeTotalPrice = (checked, price) => {
     if (checked) {
       setTotal(total + price);
@@ -34,25 +26,24 @@ export function DataProvider({ children }) {
     }
   };
 
-  const checkBox = options.map((option, index) => {
-    return (
-      <CheckBox
-        key={index}
-        title={option.title}
-        description={option.description}
-        price={option.price}
-        changeTotalPrice={changeTotalPrice}
-      />
-    );
-  });
-
-  return (
-    <crearCheckboxes.Provider value={checkBox}>
-      <totalPrice.Provider value={total}>
-        <setTotalPrice.Provider value={changeTotalPrice}>
-          {children}
-        </setTotalPrice.Provider>
-      </totalPrice.Provider>
-    </crearCheckboxes.Provider>
+  //State para controlar si un checkbox está seleccionado o no
+  const [checkedStates, setCheckedStates] = useState(
+    budgetOptions.map(() => false)
   );
+  // Método para cambiar el estado de selección del checkbox
+  const changeStateCheck = (index, isChecked) => {
+    const newCheckedStates = [...checkedStates];
+    newCheckedStates[index] = isChecked;
+    setCheckedStates(newCheckedStates);
+  };
+
+  const data = {
+    budgetOptions,
+    total,
+    changeTotalPrice,
+    checkedStates,
+    changeStateCheck,
+  };
+
+  return <dataContext.Provider value={data}>{children}</dataContext.Provider>;
 }

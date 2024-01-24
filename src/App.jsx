@@ -1,30 +1,14 @@
 import "./assets/App.css";
 import { Header } from "./components/Header";
-import { CheckBox } from "./components/CheckBox";
 import { Summary } from "./components/Summary";
-import { useState } from "react";
-
-const options = [
-  {
-    title: "Seo",
-    description: "Programació d'una web responsive completa",
-    price: 300,
-  },
-  {
-    title: "Ads",
-    description: "Programació d'una web responsive completa",
-    price: 400,
-  },
-  {
-    title: "Web",
-    description: "Programació d'una web responsive completa",
-    price: 500,
-  },
-];
+import { CheckB } from "./components/CheckB";
+import { DataProvider } from "./context/DataProvider";
+//import { useDataContext } from "../context/DataProvider";
 
 function App() {
-  const [total, setTotal] = useState(0);
+  //const [total, setTotal] = useState(0);
 
+  /*
   const changeTotalPrice = (checked, price) => {
     if (checked) {
       setTotal(total + price);
@@ -44,13 +28,16 @@ function App() {
       />
     );
   });
+*/
 
   return (
-    <>
+    <DataProvider>
       <Header>Aconsegueix la millor qualitat</Header>
-      <div className="app-checkbox-container">{checkBox}</div>
-      <Summary>{total}</Summary>
-    </>
+      <div className="app-checkbox-container">
+        <CheckB />
+      </div>
+      <Summary />
+    </DataProvider>
   );
 }
 
