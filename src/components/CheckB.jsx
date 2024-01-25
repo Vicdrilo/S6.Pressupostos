@@ -1,5 +1,5 @@
-import "../assets/CheckB.css";
-import { useDataContext } from "../context/DataProvider";
+import "../styles/CheckB.css";
+import { useBudgetDataContext } from "../context/DataProvider";
 import { WebOptions } from "./WebOptions";
 
 export function CheckB() {
@@ -9,7 +9,7 @@ export function CheckB() {
     changeTotalPrice,
     checkedStates,
     changeStateCheck,
-  } = useDataContext();
+  } = useBudgetDataContext();
 
   const creationCheckboxes = budgetOptions.map((option, index) => {
     const isChecked = checkedStates[index];

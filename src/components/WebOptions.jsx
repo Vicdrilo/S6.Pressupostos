@@ -1,5 +1,5 @@
 import { ButtonNum } from "./ButtonNum";
-import "../assets/WebOptions.css";
+import "../styles/WebOptions.css";
 
 export function WebOptions() {
   return (

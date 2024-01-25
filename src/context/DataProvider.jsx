@@ -2,13 +2,18 @@ import React, { useContext, useState } from "react";
 import budgetOptions from "../data/BudgetData.json";
 
 //Creación de los context //////////////////////////////////////////////////
-const dataContext = React.createContext();
+const budgetDataContext = React.createContext();
+const summaryDataContext = React.createContext();
 
 console.log("Prueba de que retorna el JSON: ", budgetOptions);
 
 //useContext/////////////////////////////////////////////////////////////////
-export function useDataContext() {
-  return useContext(dataContext);
+export function useBudgetDataContext() {
+  return useContext(budgetDataContext);
+}
+
+export function useSummaryDataContext() {
+  return useContext(summaryDataContext);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -45,5 +50,21 @@ export function DataProvider({ children }) {
     changeStateCheck,
   };
 
-  return <dataContext.Provider value={data}>{children}</dataContext.Provider>;
+  //State para cambiar Summary
+  const [isSummary, setSummary] = useState(false);
+
+  const changeToSummary = (bool) => {
+    if (bool) {
+      setSummary(bool);
+    } else {
+      setSummary(false);
+    }
+  };
+  return (
+    <budgetDataContext.Provider value={data}>
+      <summaryDataContext.Provider value={{ isSummary, changeToSummary }}>
+        {children}
+      </summaryDataContext.Provider>
+    </budgetDataContext.Provider>
+  );
 }

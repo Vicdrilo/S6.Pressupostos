@@ -1,8 +1,8 @@
 import { useState } from "react";
 import minus from "../assets/minus-svgrepo-com.svg";
 import plus from "../assets/plus-svgrepo-com.svg";
-import "../assets/ButtonNum.css";
-import { useDataContext } from "../context/DataProvider";
+import "../styles/ButtonNum.css";
+import { useBudgetDataContext } from "../context/DataProvider";
 
 export function ButtonNum({ id }) {
   const {
@@ -11,7 +11,7 @@ export function ButtonNum({ id }) {
     changeTotalPrice,
     isChecked,
     changeStateCheck,
-  } = useDataContext();
+  } = useBudgetDataContext();
 
   const [num, setNum] = useState(0);
 
