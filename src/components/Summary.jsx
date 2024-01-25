@@ -1,3 +1,4 @@
+import { Outlet, Link } from "react-router-dom";
 import {
   useBudgetDataContext,
   useSummaryDataContext,
@@ -24,7 +25,10 @@ export function Summary({ children }) {
     <div className={sumContainerClass}>
       <div className={displaySummary}>
         <h1>Preu pressupostat: {total}€</h1>
-        <button>Volver</button>
+        <Link to="/">
+          <button>Volver</button>
+        </Link>
+        <Outlet />
       </div>
       <div className={displayHome}>
         <h2 className="colorGreen">Propossit del lloc web</h2>
@@ -44,8 +48,10 @@ export function Summary({ children }) {
           que es dessitgin i, a la part inferior, s'anirà mostrant el preu total
           i altres opcions.
         </p>
-
-        <button>Pressupostos</button>
+        <Link to="budget">
+          <button>Pressupostos</button>
+        </Link>
+        <Outlet />
       </div>
     </div>
   );

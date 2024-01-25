@@ -5,11 +5,17 @@ import { CheckB } from "./components/CheckB";
 import { DataProvider } from "./context/DataProvider";
 import { Home } from "./pages/Home";
 import { Pressupost } from "./pages/Pressupost";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <DataProvider>
-      <Pressupost />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="budget" element={<Pressupost />} />
+        </Routes>
+      </BrowserRouter>
     </DataProvider>
   );
 }
