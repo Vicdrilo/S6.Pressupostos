@@ -1,0 +1,85 @@
+.sum-container-right,
+.sum-container-center {
+  display: flex;
+  justify-content: end;
+  width: 50%;
+}
+
+.sum-container-right {
+  justify-content: end;
+}
+
+.sum-container-center {
+  justify-content: center;
+}
+
+.sum-display-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.sum-display-summary > h1 {
+  font-size: 2rem;
+}
+
+.sum-display-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  border-radius: 30px;
+  box-shadow: 1px 1px 3px rgba(0, 112, 0, 0.591);
+  background-color: rgba(0, 112, 0, 0.041);
+  padding: 1rem;
+}
+
+.sum-display-home > p {
+  text-align: start;
+}
+[class*="sum-container-"] button {
+  font-size: 1.2rem;
+  border-radius: 30px;
+  background-color: rgba(0, 112, 0);
+  color: aliceblue;
+}
+
+[class*="sum-container-"] button:hover {
+  background-color: rgba(0, 112, 0, 0.041);
+  border: 1px solid rgba(0, 112, 0);
+  color: black;
+}
+.colorGreen {
+  color: rgba(0, 112, 0);
+}
+hr {
+  border: 1px solid rgba(0, 112, 0);
+}
+.textCenter {
+  text-align: center;
+}
+
+.sum-display-none {
+  display: none;
+}
+
+.sum-form-container {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .sum-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .sum-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .sum-container {
+    width: 70%;
+  }
+}

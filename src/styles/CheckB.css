@@ -33,6 +33,10 @@
   width: 30%;
 }
 
+.cb-checkbox-container [type="checkbox"] {
+  accent-color: rgb(0, 112, 0);
+}
+
 .cb-description-container > h2 {
   margin-bottom: 0%;
   color: rgba(0, 112, 0);
@@ -54,6 +58,7 @@
   display: flex;
   flex-direction: column;
   align-items: end;
+  gap: 0.5rem;
 }
 
 .cb-container-web-options-none {

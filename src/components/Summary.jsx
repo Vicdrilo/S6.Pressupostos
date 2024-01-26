@@ -3,6 +3,8 @@ import {
   useBudgetDataContext,
   useSummaryDataContext,
 } from "../context/DataProvider";
+import { Form } from "./Form";
+import "../styles/Summary.css";
 
 export function Summary({ children }) {
   const {
@@ -29,6 +31,9 @@ export function Summary({ children }) {
           <button>Volver</button>
         </Link>
         <Outlet />
+        <div className="sum-form-container">
+          <Form />
+        </div>
       </div>
       <div className={displayHome}>
         <h2 className="colorGreen">Propossit del lloc web</h2>
