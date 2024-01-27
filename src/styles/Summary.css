@@ -1,32 +1,52 @@
-.sum-container-right,
-.sum-container-center {
+
+.sum-container {
   display: flex;
-  justify-content: end;
+  justify-content: center; 
+  width: 100%; /*Valor anterior 50%*/
+}
+
+/*SUMMARY BOX styles*/
+.sum-display-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 50%;
 }
 
-.sum-container-right {
-  justify-content: end;
-}
+/*generic styles*/
 
-.sum-container-center {
-  justify-content: center;
-}
 
-.sum-display-summary {
+/*TOTAL PRICE BOX styles from summary*/
+.sum-total-container{
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: end;
 }
-.sum-display-summary > h1 {
-  font-size: 2rem;
+
+/*FORM BOX styles from summary*/
+.sum-form-container{
+  margin: 2rem;
+  width: 110%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  box-shadow: 5px 5px 5px 1px rgb(183, 181, 181);
+  border-radius: 30px;
+  padding-bottom: 3rem;
+}
+.sum-form-container>h1{
+  margin: 1rem
 }
 
+
+/*HOME BOX styles*/
 .sum-display-home {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 50%;
   border-radius: 30px;
   box-shadow: 1px 1px 3px rgba(0, 112, 0, 0.591);
   background-color: rgba(0, 112, 0, 0.041);
@@ -36,34 +56,31 @@
 .sum-display-home > p {
   text-align: start;
 }
-[class*="sum-container-"] button {
-  font-size: 1.2rem;
-  border-radius: 30px;
-  background-color: rgba(0, 112, 0);
-  color: aliceblue;
-}
-
-[class*="sum-container-"] button:hover {
-  background-color: rgba(0, 112, 0, 0.041);
-  border: 1px solid rgba(0, 112, 0);
-  color: black;
-}
 .colorGreen {
   color: rgba(0, 112, 0);
 }
-hr {
-  border: 1px solid rgba(0, 112, 0);
-}
-.textCenter {
-  text-align: center;
-}
 
+/*DISPLAY NONE for Home or Summary boxes*/
 .sum-display-none {
   display: none;
 }
 
-.sum-form-container {
-  width: 100%;
+/*GENERIC styles*/
+.sum-display-summary h1 {
+  font-size: 2rem;
+}
+
+.sum-container button {
+  font-size: 1.2rem;
+  border-radius: 10px;
+  background-color: rgba(0, 112, 0);
+  color: aliceblue;
+}
+
+.sum-container button:hover {
+  background-color: rgba(0, 112, 0, 0.041);
+  border: 2px solid rgba(0, 112, 0);
+  color: black;
 }
 
 @media only screen and (max-width: 600px) {
@@ -81,5 +98,19 @@ hr {
 @media only screen and (max-width: 1000px) {
   .sum-container {
     width: 70%;
+  }
+  .sum-display-summary{
+    width: 100%;
+  }
+  .sum-form-container{
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    box-shadow: 5px 5px 5px 1px rgb(183, 181, 181);
+    border-radius: 30px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
   }
 }

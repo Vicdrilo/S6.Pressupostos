@@ -9,6 +9,8 @@ export function CheckB() {
     changeTotalPrice,
     checkedStates,
     changeStateCheck,
+    servicesChecked,
+    savedBudgets
   } = useBudgetDataContext();
 
   const creationCheckboxes = budgetOptions.map((option, index) => {
@@ -42,7 +44,7 @@ export function CheckB() {
                 name={option.title}
                 checked={isChecked}
                 onChange={(e) => {
-                  changeStateCheck(index, e.target.checked);
+                  changeStateCheck(index, e.target.checked, option.title);
                   changeTotalPrice(e.target.checked, option.price);
                 }}
               />

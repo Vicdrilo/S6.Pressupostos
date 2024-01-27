@@ -17,22 +17,24 @@ export function Summary({ children }) {
 
   const { isSummary, changeToSummary } = useSummaryDataContext();
 
-  const sumContainerClass = isSummary
-    ? "sum-container-right"
-    : "sum-container-center";
   const displaySummary = isSummary ? "sum-display-summary" : "sum-display-none";
   const displayHome = isSummary ? "sum-display-none" : "sum-display-home";
 
   return (
-    <div className={sumContainerClass}>
+    <div className="sum-container">
       <div className={displaySummary}>
+        <div className="sum-total-container">
         <h1>Preu pressupostat: {total}€</h1>
         <Link to="/">
           <button>Volver</button>
         </Link>
         <Outlet />
+        </div>
         <div className="sum-form-container">
+          <h1>Demanar pressupost</h1>
           <Form />
+            
+          
         </div>
       </div>
       <div className={displayHome}>

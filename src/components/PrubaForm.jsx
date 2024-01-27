@@ -1,19 +1,7 @@
-
 import { useForm } from "react-hook-form";
-import { useBudgetDataContext } from "../context/DataProvider";
 import "../styles/Form.css";
 
-export function Form() {
-  const {
-    budgetOptions,
-    total,
-    changeTotalPrice,
-    checkedStates,
-    changeStateCheck,
-    servicesChecked,
-    savedBudgets
-  } = useBudgetDataContext();
-
+export function PruebaForm() {
   const {
     register,
     handleSubmit,
@@ -26,10 +14,7 @@ export function Form() {
       <form
         className="form-input-container"
         onSubmit={handleSubmit((data) => {
-          data.budgets = servicesChecked;
-          data.price = total;
-          savedBudgets.push(data);
-          console.log('OJO CON LA PRUEBA DEL OBJETO: ',data);
+          console.log(data);
         })}
       >
         <input
@@ -66,13 +51,9 @@ export function Form() {
         <input
           type="submit"
           className="form-button"
-          value='Sol·licitar pressupost'
+          value="Sol·licitar pressupost"
         />
       </form>
     </div>
   );
 }
-
-/*<span>
-    <img src={arrow} alt="white-right-arrow" />
-</span>*/

@@ -18,6 +18,9 @@ export function useSummaryDataContext() {
 
 ///////////////////////////////////////////////////////////////////////////////////
 export function DataProvider({ children }) {
+  //Datos de los presupuestos que se guardan//////////////////////////////////
+  let servicesChecked = [];
+  let savedBudgets = [];
   //Datos que añadir al Provider//////////////////////////////////////////////
 
   //State para controlar el precio del presupuesto
@@ -36,7 +39,20 @@ export function DataProvider({ children }) {
     budgetOptions.map(() => false)
   );
   // Método para cambiar el estado de selección del checkbox
-  const changeStateCheck = (index, isChecked) => {
+  
+  const changeStateCheck = (index, isChecked, title) => {
+    if(isChecked){
+      let isAlreadyListed = servicesChecked.filter((service) => service === title);
+      if(isAlreadyListed.length<1){
+        servicesChecked.push(title);
+      }
+    }else if(!isChecked){
+      servicesChecked = servicesChecked.map((service)=>{
+        if(service === title){
+          return null;
+        }
+      }).filter((e)=>e!==null);
+    }
     const newCheckedStates = [...checkedStates];
     newCheckedStates[index] = isChecked;
     setCheckedStates(newCheckedStates);
@@ -48,6 +64,8 @@ export function DataProvider({ children }) {
     changeTotalPrice,
     checkedStates,
     changeStateCheck,
+    servicesChecked,
+    savedBudgets
   };
 
   //State para cambiar Summary
@@ -55,7 +73,7 @@ export function DataProvider({ children }) {
 
   const changeToSummary = (bool) => {
     if (bool) {
-      setSummary(bool);
+      setSummary(true);
     } else {
       setSummary(false);
     }
