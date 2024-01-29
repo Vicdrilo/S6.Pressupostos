@@ -4,16 +4,16 @@ import { WebOptions } from "./WebOptions";
 
 export function CheckB() {
   const {
-    budgetOptions,
+    serviceOptions,
     total,
     changeTotalPrice,
     checkedStates,
     changeStateCheck,
-    servicesChecked,
-    savedBudgets
+    changeServicesCheckedList,
+    savedBudgets,
   } = useBudgetDataContext();
 
-  const creationCheckboxes = budgetOptions.map((option, index) => {
+  const creationCheckboxes = serviceOptions.map((option, index) => {
     const isChecked = checkedStates[index];
 
     const cbContainerClass = isChecked
@@ -44,7 +44,8 @@ export function CheckB() {
                 name={option.title}
                 checked={isChecked}
                 onChange={(e) => {
-                  changeStateCheck(index, e.target.checked, option.title);
+                  changeServicesCheckedList(e.target.checked, option.title);
+                  changeStateCheck(index, e.target.checked);
                   changeTotalPrice(e.target.checked, option.price);
                 }}
               />

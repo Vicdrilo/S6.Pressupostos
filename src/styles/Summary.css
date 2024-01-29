@@ -1,7 +1,6 @@
-
 .sum-container {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 100%; /*Valor anterior 50%*/
 }
 
@@ -15,9 +14,8 @@
 
 /*generic styles*/
 
-
 /*TOTAL PRICE BOX styles from summary*/
-.sum-total-container{
+.sum-total-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -25,7 +23,7 @@
 }
 
 /*FORM BOX styles from summary*/
-.sum-form-container{
+.sum-form-container {
   margin: 2rem;
   width: 110%;
   display: flex;
@@ -36,10 +34,9 @@
   border-radius: 30px;
   padding-bottom: 3rem;
 }
-.sum-form-container>h1{
-  margin: 1rem
+.sum-form-container > h1 {
+  margin: 1rem;
 }
-
 
 /*HOME BOX styles*/
 .sum-display-home {
@@ -72,6 +69,7 @@
 
 .sum-container button {
   font-size: 1.2rem;
+  border: 2px solid rgba(0, 112, 0);
   border-radius: 10px;
   background-color: rgba(0, 112, 0);
   color: aliceblue;
@@ -99,10 +97,10 @@
   .sum-container {
     width: 70%;
   }
-  .sum-display-summary{
+  .sum-display-summary {
     width: 100%;
   }
-  .sum-form-container{
+  .sum-form-container {
     border: 1px solid;
     display: flex;
     flex-direction: column;
@@ -111,6 +109,5 @@
     border-radius: 30px;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    
   }
 }

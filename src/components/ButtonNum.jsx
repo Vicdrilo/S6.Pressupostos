@@ -6,15 +6,22 @@ import { useBudgetDataContext } from "../context/DataProvider";
 
 export function ButtonNum({ id }) {
   const {
-    budgetOptions,
+    serviceOptions,
     total,
     changeTotalPrice,
-    isChecked,
+    checkedStates,
     changeStateCheck,
+    servicesChecked,
+    changeServicesCheckedList,
+    subservicesQuantity,
+    changeSubservicesQuantity,
+    savedBudgets,
+    changeSavedBudgets,
+    resetForm,
   } = useBudgetDataContext();
 
   const [num, setNum] = useState(0);
-
+  console.log(num);
   const changeNum = (e) => {
     let check;
     let price = 0;
@@ -33,8 +40,18 @@ export function ButtonNum({ id }) {
 
   return (
     <div className="bn-container">
-      <button className="bn-less" onClick={(e) => changeNum(e.target.id)}>
-        <img src={minus} alt="minus" id="minus" className="bn-img" />
+      <button className="bn-less">
+        <img
+          src={minus}
+          alt="minus"
+          id="minus"
+          className="bn-img"
+          onClick={(e) => {
+            changeNum(e.target.id);
+            console.log(num);
+            changeSubservicesQuantity(id, num);
+          }}
+        />
       </button>
       <input
         type="text"
@@ -43,8 +60,18 @@ export function ButtonNum({ id }) {
         value={num}
         className="bn-input-text-num"
       />
-      <button className="bn-plus" onClick={(e) => changeNum(e.target.id)}>
-        <img src={plus} alt="plus" id="plus" className="bn-img" />
+      <button className="bn-plus">
+        <img
+          src={plus}
+          alt="plus"
+          id="plus"
+          className="bn-img"
+          onClick={(e) => {
+            changeNum(e.target.id);
+            console.log(num);
+            changeSubservicesQuantity(id, num);
+          }}
+        />
       </button>
     </div>
   );

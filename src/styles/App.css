@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   width: 80%;
-  height: 20vh;
+  height: 150px;
   border-radius: 30px;
   background-color: rgba(8, 56, 8, 0.192);
   color: rgb(0, 112, 0);
@@ -30,4 +30,10 @@
   width: 100%;
   margin: 3rem 0;
   gap: 1.5rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .header {
+    width: 100%;
+  }
 }

@@ -4,15 +4,23 @@ import {
   useSummaryDataContext,
 } from "../context/DataProvider";
 import { Form } from "./Form";
+import { BudgetList } from "./BudgetList";
 import "../styles/Summary.css";
 
 export function Summary({ children }) {
   const {
-    budgetOptions,
+    serviceOptions,
     total,
     changeTotalPrice,
-    isChecked,
+    checkedStates,
     changeStateCheck,
+    servicesChecked,
+    changeServicesCheckedList,
+    subservicesQuantity,
+    changeSubservicesQuantity,
+    savedBudgets,
+    changeSavedBudgets,
+    resetForm,
   } = useBudgetDataContext();
 
   const { isSummary, changeToSummary } = useSummaryDataContext();
@@ -24,17 +32,18 @@ export function Summary({ children }) {
     <div className="sum-container">
       <div className={displaySummary}>
         <div className="sum-total-container">
-        <h1>Preu pressupostat: {total}€</h1>
-        <Link to="/">
-          <button>Volver</button>
-        </Link>
-        <Outlet />
+          <h1>Preu pressupostat: {total}€</h1>
+          <Link to="/">
+            <button onClick={resetForm()}>Volver</button>
+          </Link>
+          <Outlet />
         </div>
         <div className="sum-form-container">
           <h1>Demanar pressupost</h1>
           <Form />
-            
-          
+        </div>
+        <div className="budgetListContainer">
+          <BudgetList />
         </div>
       </div>
       <div className={displayHome}>
