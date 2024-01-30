@@ -4,13 +4,22 @@ import { WebOptions } from "./WebOptions";
 
 export function CheckB() {
   const {
-    serviceOptions,
-    total,
-    changeTotalPrice,
+    serviceOptions, //archivo JSON
+    total, //total precios
+    changeTotalPrice, //cambiar el precio total del presupuestos
+    numLang, //número lengajes
+    changeNumLang, //cambio núm lenguajes
+    numPage, //número páginas
+    changeNumPage, // cambio núm páginas
     checkedStates,
     changeStateCheck,
+    servicesChecked,
     changeServicesCheckedList,
+    subservicesQuantity,
+    changeSubservicesQuantity,
     savedBudgets,
+    changeSavedBudgets,
+    resetForm,
   } = useBudgetDataContext();
 
   const creationCheckboxes = serviceOptions.map((option, index) => {
@@ -46,7 +55,11 @@ export function CheckB() {
                 onChange={(e) => {
                   changeServicesCheckedList(e.target.checked, option.title);
                   changeStateCheck(index, e.target.checked);
-                  changeTotalPrice(e.target.checked, option.price);
+                  changeTotalPrice(
+                    e.target.checked,
+                    option.price,
+                    option.title
+                  );
                 }}
               />
               <label htmlFor={option.title}>Afegir</label>

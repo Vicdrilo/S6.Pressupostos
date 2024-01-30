@@ -6,9 +6,13 @@ import { useBudgetDataContext } from "../context/DataProvider";
 
 export function ButtonNum({ id }) {
   const {
-    serviceOptions,
-    total,
-    changeTotalPrice,
+    serviceOptions, //archivo JSON
+    total, //total precios
+    changeTotalPrice, //cambiar el precio total del presupuestos
+    numLang, //número lengajes
+    changeNumLang, //cambio núm lenguajes
+    numPage, //número páginas
+    changeNumPage, // cambio núm páginas
     checkedStates,
     changeStateCheck,
     servicesChecked,
@@ -19,24 +23,30 @@ export function ButtonNum({ id }) {
     changeSavedBudgets,
     resetForm,
   } = useBudgetDataContext();
-
+  /*
   const [num, setNum] = useState(0);
   console.log(num);
   const changeNum = (e) => {
     let check;
     let price = 0;
+    let cont = num;
     if (e === "minus" && num > 0) {
-      setNum(num - 1);
+      cont--;
+      setNum(cont);
+      changeSubservicesQuantity(id, cont);
       check = false;
       price = 30;
     } else if (e === "plus") {
-      setNum(num + 1);
+      cont++;
+      setNum(cont);
+      changeSubservicesQuantity(id, cont);
       check = true;
       price = 30;
     }
 
     changeTotalPrice(check, price);
   };
+*/
 
   return (
     <div className="bn-container">
@@ -47,9 +57,10 @@ export function ButtonNum({ id }) {
           id="minus"
           className="bn-img"
           onClick={(e) => {
-            changeNum(e.target.id);
-            console.log(num);
-            changeSubservicesQuantity(id, num);
+            //changeNum(e.target.id);
+            id === "pages"
+              ? changeNumPage(e.target.id, id)
+              : changeNumLang(e.target.id, id);
           }}
         />
       </button>
@@ -57,8 +68,11 @@ export function ButtonNum({ id }) {
         type="text"
         id={id}
         name={id}
-        value={num}
+        value={id === "pages" ? numPage : numLang}
         className="bn-input-text-num"
+        onChange={(e) => {
+          changeSubservicesQuantity(e.target.id, num);
+        }}
       />
       <button className="bn-plus">
         <img
@@ -67,9 +81,10 @@ export function ButtonNum({ id }) {
           id="plus"
           className="bn-img"
           onClick={(e) => {
-            changeNum(e.target.id);
-            console.log(num);
-            changeSubservicesQuantity(id, num);
+            //changeNum(e.target.id);
+            id === "pages"
+              ? changeNumPage(e.target.id, id)
+              : changeNumLang(e.target.id, id);
           }}
         />
       </button>

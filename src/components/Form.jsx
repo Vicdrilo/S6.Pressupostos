@@ -4,9 +4,13 @@ import "../styles/Form.css";
 
 export function Form() {
   const {
-    serviceOptions,
-    total,
-    changeTotalPrice,
+    serviceOptions, //archivo JSON
+    total, //total precios
+    changeTotalPrice, //cambiar el precio total del presupuestos
+    numLang, //número lengajes
+    changeNumLang, //cambio núm lenguajes
+    numPage, //número páginas
+    changeNumPage, // cambio núm páginas
     checkedStates,
     changeStateCheck,
     servicesChecked,

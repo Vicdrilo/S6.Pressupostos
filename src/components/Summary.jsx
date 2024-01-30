@@ -9,9 +9,13 @@ import "../styles/Summary.css";
 
 export function Summary({ children }) {
   const {
-    serviceOptions,
-    total,
-    changeTotalPrice,
+    serviceOptions, //archivo JSON
+    total, //total precios
+    changeTotalPrice, //cambiar el precio total del presupuestos
+    numLang, //número lengajes
+    changeNumLang, //cambio núm lenguajes
+    numPage, //número páginas
+    changeNumPage, // cambio núm páginas
     checkedStates,
     changeStateCheck,
     servicesChecked,
@@ -27,6 +31,8 @@ export function Summary({ children }) {
 
   const displaySummary = isSummary ? "sum-display-summary" : "sum-display-none";
   const displayHome = isSummary ? "sum-display-none" : "sum-display-home";
+  const displayBudgetList =
+    savedBudgets.length > 0 ? "sum-budgetListContainer" : "sum-display-none";
 
   return (
     <div className="sum-container">
@@ -34,7 +40,7 @@ export function Summary({ children }) {
         <div className="sum-total-container">
           <h1>Preu pressupostat: {total}€</h1>
           <Link to="/">
-            <button onClick={resetForm()}>Volver</button>
+            <button onClick={() => resetForm()}>Volver</button>
           </Link>
           <Outlet />
         </div>
@@ -42,7 +48,12 @@ export function Summary({ children }) {
           <h1>Demanar pressupost</h1>
           <Form />
         </div>
-        <div className="budgetListContainer">
+        <hr className={displayBudgetList} />
+        <div className={displayBudgetList}>
+          <div className="sum-budget-list-title">
+            <h1>Pressupostos en curs:</h1>
+          </div>
+
           <BudgetList />
         </div>
       </div>

@@ -1,10 +1,15 @@
 import { useBudgetDataContext } from "../context/DataProvider";
+import "../styles/BudgetList.css";
 
 export function BudgetList() {
   const {
-    serviceOptions,
-    total,
-    changeTotalPrice,
+    serviceOptions, //archivo JSON
+    total, //total precios
+    changeTotalPrice, //cambiar el precio total del presupuestos
+    numLang, //número lengajes
+    changeNumLang, //cambio núm lenguajes
+    numPage, //número páginas
+    changeNumPage, // cambio núm páginas
     checkedStates,
     changeStateCheck,
     servicesChecked,
@@ -16,25 +21,30 @@ export function BudgetList() {
     resetForm,
   } = useBudgetDataContext();
 
-  const creationBudgetList = savedBudgets.map((budget, index) => {
-    const services = budget.services.map((service) => {
+  const creationBudgetList = savedBudgets.map((budget, key) => {
+    const services = budget.services.map((service, index) => {
       if (service === "Web") {
         return (
-          <li>
+          <li key={index}>
             {service} ({budget.subservices[0]} pàgines, {budget.subservices[1]}{" "}
             llenguatges)
           </li>
         );
       } else {
-        return <li>{service}</li>;
+        return <li key={index}>{service}</li>;
       }
     });
+
     return (
-      <div className="bl-container" key={index}>
+      <div className="bl-container" key={key}>
         <div className="bl-personal-data-container">
           <h2>{budget.name}</h2>
-          <p>{budget.email}</p>
-          <p>{budget.phone}</p>
+          <p>
+            <strong>{budget.email}</strong>
+          </p>
+          <p>
+            <strong>{budget.phone}</strong>
+          </p>
         </div>
         <div className="bl-services-container">
           <p>
@@ -44,8 +54,7 @@ export function BudgetList() {
         </div>
         <div className="bl-price-container">
           <h2>Total:</h2>
-          <h1>{budget.price}</h1>
-          <strong>€</strong>
+          <h1>{budget.price}€</h1>
         </div>
       </div>
     );

@@ -5,8 +5,6 @@ import serviceOptions from "../data/BudgetData.json";
 const budgetDataContext = React.createContext();
 const summaryDataContext = React.createContext();
 
-console.log("Prueba de que retorna el JSON: ", serviceOptions);
-
 //useContext/////////////////////////////////////////////////////////////////
 export function useBudgetDataContext() {
   return useContext(budgetDataContext);
@@ -33,7 +31,6 @@ export function DataProvider({ children }) {
     } else if (!bool) {
       newServicesChecked = newServicesChecked
         .map((service) => {
-          console.log(service);
           if (service === title) {
             return null;
           }
@@ -53,15 +50,69 @@ export function DataProvider({ children }) {
   };
   //Datos que añadir al Provider//////////////////////////////////////////////
 
-  //State para controlar el precio del presupuesto
+  //State para controlar el precio de solo los checkboxes
   const [total, setTotal] = useState(0);
   //Método para cambiar el precio del presupuesto
-  const changeTotalPrice = (checked, price) => {
+  const changeTotalPrice = (checked, price, title) => {
+    let cost = price;
     if (checked) {
-      setTotal(total + price);
+      setTotal(total + cost);
     } else {
-      setTotal(total - price);
+      if (title === "Web") {
+        //cost = cost + (numLang + numPage) * 30;
+
+        setSubservicesQuantity([0, 0]);
+        setNumLang(0);
+        setNumPage(0);
+      }
+
+      setTotal(total - cost);
     }
+  };
+
+  const [numPage, setNumPage] = useState(0);
+
+  const changeNumPage = (e, id) => {
+    let check;
+    let price = 0;
+    let cont = numPage;
+    if (e === "minus" && numPage > 0) {
+      cont--;
+      setNumPage(cont);
+      changeSubservicesQuantity(id, cont);
+      check = false;
+      price = 30;
+    } else if (e === "plus") {
+      cont++;
+      setNumPage(cont);
+      changeSubservicesQuantity(id, cont);
+      check = true;
+      price = 30;
+    }
+
+    changeTotalPrice(check, price);
+  };
+  const [numLang, setNumLang] = useState(0);
+
+  const changeNumLang = (e, id) => {
+    let check;
+    let price = 0;
+    let cont = numLang;
+    if (e === "minus" && numLang > 0) {
+      cont--;
+      setNumLang(cont);
+      changeSubservicesQuantity(id, cont);
+      check = false;
+      price = 30;
+    } else if (e === "plus") {
+      cont++;
+      setNumLang(cont);
+      changeSubservicesQuantity(id, cont);
+      check = true;
+      price = 30;
+    }
+
+    changeTotalPrice(check, price);
   };
 
   //State para controlar si un checkbox está seleccionado o no
@@ -74,32 +125,21 @@ export function DataProvider({ children }) {
     const newCheckedStates = [...checkedStates];
 
     newCheckedStates[index] = isChecked;
-    console.log("ARRAY PRESUPUESTOS: ", savedBudgets);
+
     setCheckedStates(newCheckedStates);
   };
 
   //Estado que almacena en un array el número de páginas y de lenguajes
   const [subservicesQuantity, setSubservicesQuantity] = useState([0, 0]);
   const changeSubservicesQuantity = (id, num) => {
-    console.log("Argumentos de changeSubservicesQuant: ", id, " y ", num);
-    let datos = [...subservicesQuantity];
-    console.log("Variable datos de changeSubservicesQuant: ", datos);
+    const datos = [...subservicesQuantity];
+
     if (id === "pages") {
       datos[0] = num;
       setSubservicesQuantity(datos);
-      console.log(
-        "Variable subservicesQuantity despues de cambiar el primer indice: ",
-        subservicesQuantity
-      );
-    }
-
-    if (id === "languaje") {
+    } else {
       datos[1] = num;
       setSubservicesQuantity(datos);
-      console.log(
-        "Variable subservicesQuantity despues de cambiar el segundo indice: ",
-        subservicesQuantity
-      );
     }
   };
 
@@ -109,16 +149,18 @@ export function DataProvider({ children }) {
     setTotal(0);
     setServicesChecked([]);
     setSubservicesQuantity([0, 0]);
-    console.log(
-      "Variable subservicesQuantity despues de reset: ",
-      subservicesQuantity
-    );
+    setNumLang(0);
+    setNumPage(0);
   };
 
   const data = {
-    serviceOptions,
-    total,
-    changeTotalPrice,
+    serviceOptions, //archivo JSON
+    total, //total precios
+    changeTotalPrice, //cambiar el precio total del presupuestos
+    numLang, //número lengajes
+    changeNumLang, //cambio núm lenguajes
+    numPage, //número páginas
+    changeNumPage, // cambio núm páginas
     checkedStates,
     changeStateCheck,
     servicesChecked,

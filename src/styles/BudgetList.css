@@ -1,0 +1,60 @@
+.bl-container {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5px 5px 5px 1px rgb(183, 181, 181);
+  border-radius: 30px;
+  padding: 2rem;
+  width: 100%;
+  gap: 2rem;
+}
+
+.bl-personal-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.bl-personal-data-container,
+.bl-services-container {
+  width: 50%;
+}
+
+.bl-personal-data-container h2,
+.bl-personal-data-container p,
+.bl-services-container li,
+.bl-price-container h1,
+.bl-price-container h2 {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.bl-services-container > p {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.bl-services-container ul {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-left: 8%;
+  margin: 0%;
+}
+
+.bl-price-container {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bl-price-container h2,
+.bl-personal-data-container p {
+  color: darkgray;
+}
