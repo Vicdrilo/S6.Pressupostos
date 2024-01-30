@@ -23,7 +23,7 @@ export function BudgetList() {
     return (
       <div className="bl-container" key={key}>
         <div className="bl-personal-data-container">
-          <h2>{budget.name}</h2>
+          <h1>{budget.name}</h1>
           <p>
             <strong>{budget.email}</strong>
           </p>

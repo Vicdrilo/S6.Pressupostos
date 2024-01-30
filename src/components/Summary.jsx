@@ -5,7 +5,9 @@ import {
 } from "../context/DataProvider";
 import { Form } from "./Form";
 import { BudgetList } from "./BudgetList";
+import { Search } from "./Search";
 import "../styles/Summary.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function Summary({ children }) {
   const {
@@ -40,7 +42,22 @@ export function Summary({ children }) {
           <div className="sum-budget-list-title">
             <h1>Pressupostos en curs:</h1>
           </div>
+          <div className="sum-budget-list-filter-menu-container">
+            <div className="navbar">
+              <Search />
 
+              <div className="nav-link">Data</div>
+              <div className="nav-link">
+                Import{" "}
+                <FontAwesomeIcon
+                  icon="fa-solid fa-caret-down"
+                  style={{ color: "darkgray" }}
+                />
+                {/*<DivDesplegable />*/}
+              </div>
+              <div className="nav-link">Nom</div>
+            </div>
+          </div>
           <BudgetList />
         </div>
       </div>

@@ -64,7 +64,7 @@ export function DataProvider({ children }) {
       setTotal(total + cost);
     } else {
       if (title === "Web") {
-        //cost = cost + (numLang + numPage) * 30;
+        cost = cost + (numLang + numPage) * 30;
 
         setSubservicesQuantity([0, 0]);
         setNumLang(0);
@@ -177,7 +177,7 @@ export function DataProvider({ children }) {
     serviceOptions, //archivo JSON con los servicios disponibles
     total, //total precios
     changeTotalPrice, //cambiar el precio total del presupuestos
-    numLang, //número lengajes
+    numLang, //número lenguajes
     changeNumLang, //cambio núm lenguajes
     numPage, //número páginas
     changeNumPage, // cambio núm páginas

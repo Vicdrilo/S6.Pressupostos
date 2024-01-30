@@ -52,6 +52,21 @@
   border-radius: 30px;
   padding: 1rem;*/
 }
+.sum-budget-list-filter-menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.nav-link {
+  cursor: pointer;
+}
 
 .sum-budget-list-title {
   width: 100%;

@@ -4,7 +4,7 @@
   box-shadow: 5px 5px 5px 1px rgb(183, 181, 181);
   border-radius: 30px;
   padding: 2rem;
-  width: 100%;
+  width: 110%;
   gap: 2rem;
 }
 
@@ -17,10 +17,12 @@
 
 .bl-personal-data-container,
 .bl-services-container {
-  width: 50%;
+  width: 40%;
 }
-
-.bl-personal-data-container h2,
+.bl-personal-data-container h1 {
+  text-align: start;
+  color: rgba(0, 112, 0);
+}
 .bl-personal-data-container p,
 .bl-services-container li,
 .bl-price-container h1,
@@ -54,7 +56,10 @@
   justify-content: center;
 }
 
-.bl-price-container h2,
+.bl-price-container h2 {
+  color: darkgray;
+  font-size: 1.4rem;
+}
 .bl-personal-data-container p {
   color: darkgray;
 }
