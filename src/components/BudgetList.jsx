@@ -3,22 +3,7 @@ import "../styles/BudgetList.css";
 
 export function BudgetList() {
   const {
-    serviceOptions, //archivo JSON
-    total, //total precios
-    changeTotalPrice, //cambiar el precio total del presupuestos
-    numLang, //número lengajes
-    changeNumLang, //cambio núm lenguajes
-    numPage, //número páginas
-    changeNumPage, // cambio núm páginas
-    checkedStates,
-    changeStateCheck,
-    servicesChecked,
-    changeServicesCheckedList,
-    subservicesQuantity,
-    changeSubservicesQuantity,
-    savedBudgets,
-    changeSavedBudgets,
-    resetForm,
+    savedBudgets, //presupuestos guardados (array)
   } = useBudgetDataContext();
 
   const creationBudgetList = savedBudgets.map((budget, key) => {

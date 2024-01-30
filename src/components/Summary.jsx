@@ -9,22 +9,9 @@ import "../styles/Summary.css";
 
 export function Summary({ children }) {
   const {
-    serviceOptions, //archivo JSON
     total, //total precios
-    changeTotalPrice, //cambiar el precio total del presupuestos
-    numLang, //número lengajes
-    changeNumLang, //cambio núm lenguajes
-    numPage, //número páginas
-    changeNumPage, // cambio núm páginas
-    checkedStates,
-    changeStateCheck,
-    servicesChecked,
-    changeServicesCheckedList,
-    subservicesQuantity,
-    changeSubservicesQuantity,
-    savedBudgets,
-    changeSavedBudgets,
-    resetForm,
+    savedBudgets, //presupuestos guardados (array)
+    resetForm, //resetear el contenido de los checkbox y algunos datos más
   } = useBudgetDataContext();
 
   const { isSummary, changeToSummary } = useSummaryDataContext();

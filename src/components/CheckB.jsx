@@ -4,22 +4,11 @@ import { WebOptions } from "./WebOptions";
 
 export function CheckB() {
   const {
-    serviceOptions, //archivo JSON
-    total, //total precios
+    serviceOptions, //archivo JSON con los servicios disponibles
     changeTotalPrice, //cambiar el precio total del presupuestos
-    numLang, //número lengajes
-    changeNumLang, //cambio núm lenguajes
-    numPage, //número páginas
-    changeNumPage, // cambio núm páginas
-    checkedStates,
-    changeStateCheck,
-    servicesChecked,
-    changeServicesCheckedList,
-    subservicesQuantity,
-    changeSubservicesQuantity,
-    savedBudgets,
-    changeSavedBudgets,
-    resetForm,
+    checkedStates, //estado de los checkboxes (seleccionado o no)
+    changeStateCheck, //cambio estado de los checkboxes
+    changeServicesCheckedList, //cambiar los servicios seleccionados
   } = useBudgetDataContext();
 
   const creationCheckboxes = serviceOptions.map((option, index) => {

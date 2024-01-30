@@ -4,22 +4,11 @@ import "../styles/Form.css";
 
 export function Form() {
   const {
-    serviceOptions, //archivo JSON
     total, //total precios
-    changeTotalPrice, //cambiar el precio total del presupuestos
-    numLang, //número lengajes
-    changeNumLang, //cambio núm lenguajes
-    numPage, //número páginas
-    changeNumPage, // cambio núm páginas
-    checkedStates,
-    changeStateCheck,
-    servicesChecked,
-    changeServicesCheckedList,
-    subservicesQuantity,
-    changeSubservicesQuantity,
-    savedBudgets,
-    changeSavedBudgets,
-    resetForm,
+    servicesChecked, //servicios que se han seleccionado para el presupuesto
+    subservicesQuantity, //cantidad de los subservicios de web
+    changeSavedBudgets, //cambiar array de presupuestos guardados
+    resetForm, //resetear el contenido de los checkbox y algunos datos más
   } = useBudgetDataContext();
 
   const { register, handleSubmit, reset } = useForm();

@@ -6,47 +6,12 @@ import { useBudgetDataContext } from "../context/DataProvider";
 
 export function ButtonNum({ id }) {
   const {
-    serviceOptions, //archivo JSON
-    total, //total precios
-    changeTotalPrice, //cambiar el precio total del presupuestos
     numLang, //número lengajes
     changeNumLang, //cambio núm lenguajes
     numPage, //número páginas
     changeNumPage, // cambio núm páginas
-    checkedStates,
-    changeStateCheck,
-    servicesChecked,
-    changeServicesCheckedList,
-    subservicesQuantity,
-    changeSubservicesQuantity,
-    savedBudgets,
-    changeSavedBudgets,
-    resetForm,
+    changeSubservicesQuantity, //cambiar la cantidad de los subservicios de web
   } = useBudgetDataContext();
-  /*
-  const [num, setNum] = useState(0);
-  console.log(num);
-  const changeNum = (e) => {
-    let check;
-    let price = 0;
-    let cont = num;
-    if (e === "minus" && num > 0) {
-      cont--;
-      setNum(cont);
-      changeSubservicesQuantity(id, cont);
-      check = false;
-      price = 30;
-    } else if (e === "plus") {
-      cont++;
-      setNum(cont);
-      changeSubservicesQuantity(id, cont);
-      check = true;
-      price = 30;
-    }
-
-    changeTotalPrice(check, price);
-  };
-*/
 
   return (
     <div className="bn-container">

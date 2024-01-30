@@ -4,6 +4,7 @@ import serviceOptions from "../data/BudgetData.json";
 //Creación de los context //////////////////////////////////////////////////
 const budgetDataContext = React.createContext();
 const summaryDataContext = React.createContext();
+const alertDataContext = React.createContext();
 
 //useContext/////////////////////////////////////////////////////////////////
 export function useBudgetDataContext() {
@@ -12,6 +13,10 @@ export function useBudgetDataContext() {
 
 export function useSummaryDataContext() {
   return useContext(summaryDataContext);
+}
+
+export function useAlertDataContext() {
+  return useContext(alertDataContext);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -153,23 +158,38 @@ export function DataProvider({ children }) {
     setNumPage(0);
   };
 
+  //Estados y métodos para Alert
+  const [isLang, setLang] = useState(false); //estado para decidir si el alert es para lenguajes o páginas
+  const [show, setShow] = useState(false); //estado para mostrar o esconder el Alert
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const alertData = {
+    isLang, //estado para decidir si el alert es para lenguajes o páginas
+    setLang,
+    show, //estado para mostrar o esconder el Alert
+    handleClose,
+    handleShow,
+  };
+
   const data = {
-    serviceOptions, //archivo JSON
+    serviceOptions, //archivo JSON con los servicios disponibles
     total, //total precios
     changeTotalPrice, //cambiar el precio total del presupuestos
     numLang, //número lengajes
     changeNumLang, //cambio núm lenguajes
     numPage, //número páginas
     changeNumPage, // cambio núm páginas
-    checkedStates,
-    changeStateCheck,
-    servicesChecked,
-    changeServicesCheckedList,
-    subservicesQuantity,
-    changeSubservicesQuantity,
-    savedBudgets,
-    changeSavedBudgets,
-    resetForm,
+    checkedStates, //estado de los checkboxes (seleccionado o no)
+    changeStateCheck, //cambio estado de los checkboxes
+    servicesChecked, //servicios que se han seleccionado para el presupuesto
+    changeServicesCheckedList, //cambiar los servicios seleccionados
+    subservicesQuantity, //cantidad de los subservicios de web
+    changeSubservicesQuantity, //cambiar la cantidad de los subservicios de web
+    savedBudgets, //presupuestos guardados (array)
+    changeSavedBudgets, //cambiar array de presupuestos guardados
+    resetForm, //resetear el contenido de los checkbox y algunos datos más
   };
 
   //State para cambiar Summary
@@ -185,7 +205,9 @@ export function DataProvider({ children }) {
   return (
     <budgetDataContext.Provider value={data}>
       <summaryDataContext.Provider value={{ isSummary, changeToSummary }}>
-        {children}
+        <alertDataContext.Provider value={alertData}>
+          {children}
+        </alertDataContext.Provider>
       </summaryDataContext.Provider>
     </budgetDataContext.Provider>
   );

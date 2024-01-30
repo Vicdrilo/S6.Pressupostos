@@ -10,3 +10,10 @@
 .wo-language-container > label {
   padding-top: 15px;
 }
+
+.wo-btn-alert,
+.wo-btn-alert:hover,
+.wo-btn-alert:active {
+  border: none;
+  padding: 0;
+}
